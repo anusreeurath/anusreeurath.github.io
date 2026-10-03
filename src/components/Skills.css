@@ -1,0 +1,272 @@
+/* ════════════════════════════════════════════════════════════
+   SKILLS  —  Creative card layout
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Section shell ──────────────────────────────────────── */
+.sk-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(56px, 7vh, 88px) 0 0;
+  background: var(--ivory);
+  overflow: hidden;
+}
+
+/* ── Ambient background orbs ────────────────────────────── */
+.sk-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sk-orb {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 50, 37, 0.07) 0%, transparent 70%);
+  animation: sk-orb-drift 9s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.sk-orb:nth-child(2) {
+  background: radial-gradient(circle, rgba(45, 106, 63, 0.06) 0%, transparent 70%);
+  animation-duration: 13s;
+}
+
+.sk-orb:nth-child(3) {
+  background: radial-gradient(circle, rgba(100, 47, 158, 0.05) 0%, transparent 70%);
+  animation-duration: 11s;
+}
+
+@keyframes sk-orb-drift {
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.25) translateY(-3%); }
+}
+
+/* ── Head ───────────────────────────────────────────────── */
+.sk-head,
+.sk-head.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: clamp(80px, 8.5vh, 110px) !important;
+  opacity: 0; /* GSAP */
+}
+
+.sk-head__h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(42px, 6.5vw, 100px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--charcoal);
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.sk-head__h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* ── Card grid ──────────────────────────────────────────── */
+.sk-grid,
+.sk-grid.container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+  margin-bottom: clamp(56px, 7vh, 100px) !important;
+}
+
+@media (max-width: 1024px) {
+  .sk-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .sk-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Individual card ────────────────────────────────────── */
+.sk-card {
+  position: relative;
+  background: var(--warm-white);
+  border: 1px solid var(--lighter);
+  border-radius: 20px;
+  padding: clamp(22px, 2.4vw, 32px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: default;
+  opacity: 0; /* GSAP */
+  transition:
+    border-color 0.35s ease,
+    box-shadow   0.35s ease,
+    transform    0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sk-card--hovered {
+  border-color: color-mix(in srgb, var(--card-color) 30%, transparent);
+  box-shadow: 0 12px 48px color-mix(in srgb, var(--card-color) 10%, transparent),
+              0 2px 8px rgba(0,0,0,0.04);
+  transform: translateY(-4px);
+}
+
+/* Glow blob inside card */
+.sk-card__blob {
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--card-bg, rgba(122,50,37,0.07)) 0%, transparent 70%);
+  transition: opacity 0.4s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.sk-card--hovered .sk-card__blob {
+  transform: scale(1.4);
+  opacity: 1.4;
+}
+
+/* Icon */
+.sk-card__icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  transition: transform 0.35s ease;
+}
+
+.sk-card--hovered .sk-card__icon {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+/* Title */
+.sk-card__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(18px, 2vw, 26px);
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+  transition: color 0.3s ease;
+}
+
+.sk-card--hovered .sk-card__title {
+  color: var(--card-color);
+}
+
+/* Pills */
+.sk-card__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.sk-pill {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mid);
+  background: var(--cream);
+  border: 1px solid var(--lighter);
+  border-radius: 100px;
+  padding: 5px 12px;
+  transition:
+    background 0.25s ease,
+    color       0.25s ease,
+    border-color 0.25s ease;
+}
+
+.sk-card--hovered .sk-pill {
+  background: color-mix(in srgb, var(--card-color) 8%, var(--cream));
+  border-color: color-mix(in srgb, var(--card-color) 22%, transparent);
+  color: var(--card-color);
+}
+
+/* Corner index number */
+.sk-card__idx {
+  position: absolute;
+  bottom: 20px;
+  right: 22px;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--light-border);
+  transition: color 0.3s ease;
+}
+
+.sk-card--hovered .sk-card__idx {
+  color: color-mix(in srgb, var(--card-color) 35%, transparent);
+}
+
+/* ── Marquee strip ──────────────────────────────────────── */
+.sk-marquee {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  border-top: 1px solid var(--lighter);
+  padding: clamp(16px, 2vw, 24px) 0;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.sk-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: sk-marquee-scroll 38s linear infinite;
+}
+
+@keyframes sk-marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.sk-marquee__item {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  white-space: nowrap;
+  padding: 0 2px;
+}
+
+.sk-marquee__dot {
+  margin: 0 clamp(12px, 2vw, 24px);
+  color: var(--light-border);
+}
+
+/* Fade edges */
+.sk-marquee::before,
+.sk-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sk-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--cream), transparent);
+}
+
+.sk-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--cream), transparent);
+}

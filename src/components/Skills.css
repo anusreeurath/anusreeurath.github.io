@@ -200,6 +200,11 @@
   border: 1px solid var(--lighter);
   border-radius: 100px;
   padding: 5px 12px;
+  /* allow wrapping for long labels */
+  white-space: normal;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.4;
   transition:
     background 0.25s ease,
     color       0.25s ease,

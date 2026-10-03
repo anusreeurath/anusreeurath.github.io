@@ -349,19 +349,12 @@
 
 @media (max-width: 600px) {
   .hero__name-wrap--top {
-    top: clamp(60px, 8vh, 74px);
+    top: clamp(62px, 8.5vh, 78px);
   }
 
   .hero__portrait {
-    /* Wider portrait = image scales taller under contain, reducing dead space */
-    width: clamp(260px, 86vw, 360px);
-    /* Start just after the navbar, not lower */
-    top: clamp(56px, 7vh, 70px);
-  }
-
-  /* Anchor person's head at top of container (matches desktop where image fills full height) */
-  .hero__img {
-    object-position: top center;
+    width: clamp(200px, 80vw, 340px);
+    top: clamp(68px, 10vh, 95px);
   }
 
   .hero__name {

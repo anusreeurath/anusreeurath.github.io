@@ -5,12 +5,11 @@
 /* ── Section shell ──────────────────────────────────────── */
 .sk-section {
   position: relative;
-  min-height: 100vh;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(56px, 7vh, 88px) 0 0;
+  padding: clamp(48px, 7vh, 88px) 0 0;
   background: var(--ivory);
   overflow: hidden;
 }
@@ -90,6 +89,25 @@
 
 @media (max-width: 600px) {
   .sk-grid { grid-template-columns: 1fr; }
+
+  .sk-head,
+  .sk-head.container {
+    margin-bottom: clamp(48px, 7vh, 80px) !important;
+  }
+
+  .sk-head__h2 {
+    font-size: clamp(36px, 10vw, 72px);
+  }
+}
+
+@media (max-width: 400px) {
+  .sk-card {
+    padding: clamp(18px, 4vw, 24px);
+  }
+
+  .sk-head__h2 {
+    font-size: clamp(30px, 11vw, 52px);
+  }
 }
 
 /* ── Individual card ────────────────────────────────────── */

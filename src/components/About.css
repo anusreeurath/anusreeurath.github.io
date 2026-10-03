@@ -11,12 +11,12 @@
 .about__statement {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(26px, 4.2vw, 64px);
-  line-height: 1.18;
+  font-size: clamp(22px, 4.2vw, 64px);
+  line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--charcoal);
   max-width: 980px;
-  margin-bottom: clamp(48px, 7vw, 96px);
+  margin-bottom: clamp(40px, 7vw, 96px);
 }
 
 .about__word { display: inline; }
@@ -276,10 +276,24 @@
   }
 
   .about__stat-number {
-    font-size: clamp(38px, 12vw, 62px);
+    font-size: clamp(32px, 12vw, 62px);
   }
 
   .about__deco-word {
     font-size: clamp(90px, 28vw, 160px);
+  }
+}
+
+@media (max-width: 400px) {
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .about__stats .about__stat:last-child {
+    grid-column: auto;
+  }
+
+  .about__stat-number {
+    font-size: clamp(36px, 15vw, 58px);
   }
 }

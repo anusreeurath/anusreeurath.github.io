@@ -21,11 +21,12 @@ ScrollTrigger.defaults({ markers: false })
 export default function App() {
   useEffect(() => {
     // Initialize Lenis smooth scroll
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: isTouchDevice ? 0.9 : 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      touchMultiplier: 1.2,
+      smoothWheel: !isTouchDevice,
+      touchMultiplier: 1.8,
       infinite: false,
     })
 

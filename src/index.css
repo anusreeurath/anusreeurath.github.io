@@ -26,8 +26,8 @@
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
 
   /* Layout */
-  --gutter:        clamp(20px, 5vw, 80px);
-  --section-gap:   clamp(80px, 12vw, 180px);
+  --gutter:        clamp(16px, 5vw, 80px);
+  --section-gap:   clamp(64px, 12vw, 180px);
   --content-max:   1440px;
 }
 
@@ -56,7 +56,11 @@ body {
   font-weight: 300;
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
+
+/* Prevent any child from causing horizontal scroll */
+#root { overflow-x: hidden; }
 
 /* ============================================================
    SCROLLBAR

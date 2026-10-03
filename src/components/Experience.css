@@ -15,11 +15,11 @@
 .exp__heading {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(36px, 5.5vw, 88px);
+  font-size: clamp(28px, 5.5vw, 88px);
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--charcoal);
-  margin-bottom: clamp(56px, 8vw, 100px);
+  margin-bottom: clamp(44px, 8vw, 100px);
 }
 .exp__heading em {
   font-style: italic;
@@ -147,9 +147,20 @@
 /* Mobile */
 @media (max-width: 640px) {
   .exp__item {
-    grid-template-columns: 56px 24px 1fr;
+    grid-template-columns: 52px 20px 1fr;
     gap: 0 10px;
   }
   .exp__header { flex-direction: column; }
   .exp__details { align-items: flex-start; flex-direction: row; gap: 10px; }
+}
+
+/* Very small phones — hide year column */
+@media (max-width: 380px) {
+  .exp__item {
+    grid-template-columns: 20px 1fr;
+    gap: 0 12px;
+  }
+  .exp__year {
+    display: none;
+  }
 }
